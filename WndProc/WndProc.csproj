@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Vortice.Direct2D1.1.8.54\build\netstandard2.0\Vortice.Direct2D1.props" Condition="Exists('..\packages\Vortice.Direct2D1.1.8.54\build\netstandard2.0\Vortice.Direct2D1.props')" />
+  <Import Project="..\packages\Vortice.DXGI.1.8.54\build\netstandard2.0\Vortice.DXGI.props" Condition="Exists('..\packages\Vortice.DXGI.1.8.54\build\netstandard2.0\Vortice.DXGI.props')" />
+  <Import Project="..\packages\Vortice.DirectX.1.8.54\build\netstandard2.0\Vortice.DirectX.props" Condition="Exists('..\packages\Vortice.DirectX.1.8.54\build\netstandard2.0\Vortice.DirectX.props')" />
+  <Import Project="..\packages\Vortice.Runtime.COM.1.8.54\build\netstandard2.0\Vortice.Runtime.COM.props" Condition="Exists('..\packages\Vortice.Runtime.COM.1.8.54\build\netstandard2.0\Vortice.Runtime.COM.props')" />
+  <Import Project="..\packages\SharpGen.Runtime.1.2.1\build\SharpGen.Runtime.props" Condition="Exists('..\packages\SharpGen.Runtime.1.2.1\build\SharpGen.Runtime.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{30A3F846-C7C6-4518-A878-545D3AECC84A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WndProc</RootNamespace>
+    <AssemblyName>WndProc</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="NetDimension.NanUI, Version=0.8.80.191, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\NetDimension.NanUI.0.8.80.191\lib\net472\NetDimension.NanUI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpGen.Runtime, Version=1.2.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\SharpGen.Runtime.1.2.1\lib\netstandard2.0\SharpGen.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Json, Version=2.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\System.Json.4.7.1\lib\net461\System.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Text.Json.5.0.0\lib\net461\System.Text.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Vortice.Direct2D1, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Vortice.Direct2D1.1.8.54\lib\netstandard2.0\Vortice.Direct2D1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vortice.DirectX, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Vortice.DirectX.1.8.54\lib\netstandard2.0\Vortice.DirectX.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vortice.DXGI, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Vortice.DXGI.1.8.54\lib\netstandard2.0\Vortice.DXGI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vortice.Mathematics, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Vortice.Mathematics.1.3.3\lib\netstandard2.0\Vortice.Mathematics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Vortice.Runtime.COM, Version=1.8.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Vortice.Runtime.COM.1.8.54\lib\netstandard2.0\Vortice.Runtime.COM.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUserModel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserModel.Designer.cs">
+      <DependentUpon>FrmUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="UserType.cs" />
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserModel.resx">
+      <DependentUpon>FrmUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="UserDataSet.xsc">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UserDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UserDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UserDataSet.xss">
+      <DependentUpon>UserDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{7c719388-055b-40ad-98b0-fbace65c9a4c}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SharpGen.Runtime.1.2.1\build\SharpGen.Runtime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SharpGen.Runtime.1.2.1\build\SharpGen.Runtime.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.Runtime.COM.1.8.54\build\netstandard2.0\Vortice.Runtime.COM.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Vortice.Runtime.COM.1.8.54\build\netstandard2.0\Vortice.Runtime.COM.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.DirectX.1.8.54\build\netstandard2.0\Vortice.DirectX.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Vortice.DirectX.1.8.54\build\netstandard2.0\Vortice.DirectX.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.DXGI.1.8.54\build\netstandard2.0\Vortice.DXGI.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Vortice.DXGI.1.8.54\build\netstandard2.0\Vortice.DXGI.props'))" />
+    <Error Condition="!Exists('..\packages\Vortice.Direct2D1.1.8.54\build\netstandard2.0\Vortice.Direct2D1.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Vortice.Direct2D1.1.8.54\build\netstandard2.0\Vortice.Direct2D1.props'))" />
+    <Error Condition="!Exists('..\packages\NetDimension.NanUI.Runtime.80.1.15\build\NetDimension.NanUI.Runtime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NetDimension.NanUI.Runtime.80.1.15\build\NetDimension.NanUI.Runtime.targets'))" />
+  </Target>
+  <Import Project="..\packages\NetDimension.NanUI.Runtime.80.1.15\build\NetDimension.NanUI.Runtime.targets" Condition="Exists('..\packages\NetDimension.NanUI.Runtime.80.1.15\build\NetDimension.NanUI.Runtime.targets')" />
+</Project>
